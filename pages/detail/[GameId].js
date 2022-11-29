@@ -7,6 +7,7 @@ import GameDetailLB from "../../components/GameDetail/GameDetailLB";
 import Navbar from "../../components/Layout/Nav/Navbar";
 import Footer from "../../components/Layout/Footer/Footer";
 
+
 const GameDetail = () =>{
     const router = useRouter()
     const idGame = router.query.GameId
