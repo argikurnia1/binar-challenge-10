@@ -50,7 +50,7 @@ class Login extends Component {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered>
-        <Modal.Body className={`${style["show-grid"]} ${style.modalBody}`}>
+        <Modal.Body className={`show-grid ${style.modalBody}`}>
           <Container>
             <Row>
               <Col md={6} className={style.rowLeft}>

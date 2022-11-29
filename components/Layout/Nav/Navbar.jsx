@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkDataLogin, firebaseLogout } from "../../../actions/autentication";
 import { useRouter } from "next/router";
 import { userLoginAction } from "../../../redux/reducers/loginReducer";
+import Image from "next/image";
+import style from "../../../styles/Home.module.css"
 
 const Navbar = ({ bgColor, user, transparant = false }) => {
   const [showModal, setShowModal] = useState(false);
@@ -43,7 +45,7 @@ const Navbar = ({ bgColor, user, transparant = false }) => {
       >
         <div className="container">
           <a className="navbar-brand" href="/">
-            <img src={logo} />
+            <Image src={logo} className={style.logo}/>
           </a>
           <button
             className="navbar-toggler"
