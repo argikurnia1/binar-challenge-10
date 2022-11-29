@@ -12,6 +12,7 @@ import Navbar from "../../components/Layout/Nav/Navbar"
 import Footer from "../../components/Layout/Footer/Footer";
 import { registerUser } from "../../actions/fb_database";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import LoadingButton from "../../components/Layout/Button/LoadingButton";
 
 class Register extends Component {
@@ -22,6 +23,15 @@ class Register extends Component {
     username: "",
   };
 
+  // handleRegister = async () => {
+  //   const resp = await registerUser(this.state.username, this.state.password, this.state.name, this.state.email)
+  //   if(resp.status === 'ERROR'){
+  //     alert('ERROR')
+  //     console.log('resp', resp)
+  //   } else {
+  //     useRouter.push('/')
+  //   }
+  // }
   handleRegister = () => {
     createUserWithEmailAndPassword(
       authFirebase,

@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 import { getUserById, historyByUser } from "../../actions/fb_database";
-import Footer from "../../components/layout/footer/Footer";
-import Navbar from "../../components/layout/nav/Navbar";
-import ProfileGameHistory from "../../components/profile/ProfileGameHistory";
-import ProfileHeader from "../../components/profile/ProfileHeader";
+import Footer from "../../components/Layout/Footer/Footer";
+import Navbar from "../../components/Layout/Nav/Navbar";
+import ProfileGameHistory from "../../components/Profile/ProfileGameHistory";
+import ProfileHeader from "../../components/Profile/ProfileHeader";
 const Profile = () => {
   const [userDataById, setUserDataById] = useState({});
   const [userGameHistory, setUserGameHistory] = useState([]);
