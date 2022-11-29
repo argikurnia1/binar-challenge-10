@@ -34,9 +34,13 @@
 }
 
 .carouselControlPrev {
-  left: -85px;
+  position: absolute;
+  top: 50%;
+  left: -30px;
 }
 
 .carouselControlNext {
-  right: -85px;
+  position: absolute;
+  top: 50%;
+  right: -30px;
 }

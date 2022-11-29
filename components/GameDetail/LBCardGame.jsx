@@ -1,5 +1,5 @@
 import { Card, Row, Col } from "react-bootstrap";
-import styleLBCardGame from "./LBCardGame.module.css"
+import styleLBCardGame from "./LBCardGame.module.css";
 
 const LBCardGame = (props) => {
   return (
@@ -9,7 +9,7 @@ const LBCardGame = (props) => {
           <Col xs="auto">
             <img
               src={props.profile_picture}
-              style={{ width: 60, borderRadius: "50%" }}
+              style={{ width: 60, height: 60, borderRadius: "50%" }}
             />
           </Col>
           <Col>

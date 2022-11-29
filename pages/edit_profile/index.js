@@ -1,7 +1,8 @@
 import { Component } from "react";
 import { Container } from "react-bootstrap";
 import EditProfileBox from "../../components/EditProfile/EditProfileBox";
-import Navbar from "../../components/layout/nav/Navbar";
+import Navbar from "../../components/Layout/Nav/Navbar";
+import Footer from "../../components/Layout/Footer/Footer";
 
 class EditProfile extends Component {
   render() {
@@ -11,6 +12,7 @@ class EditProfile extends Component {
         <Container>
           <EditProfileBox />
         </Container>
+        <Footer />
       </div>
     );
   }

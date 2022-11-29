@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { updateProfile } from "../../actions/fb_database";
 import { uploadProfileImg } from "../../actions/fb_storage";
 import { retrieveLoginUser } from "../../redux/reducers/loginReducer";
-import LoadingButton from "../layout/button/LoadingButton";
+import LoadingButton from "../Layout/Button/LoadingButton";
 import { loadingAction } from "../../redux/reducers/loadingReducer";
 
 const EditProfileBox = () => {
@@ -170,6 +170,7 @@ const EditProfileBox = () => {
                       placeholder="Enter Email"
                       onChange={InputEvent}
                       name="email"
+                      disabled
                     />
                   </InputGroup>
                 </div>
@@ -208,6 +209,7 @@ const EditProfileBox = () => {
                   <LoadingButton
                     onClick={() => handleUpdate()}
                     title="UPDATE"
+                    variant="success"
                   />
                 </div>
               </Col>

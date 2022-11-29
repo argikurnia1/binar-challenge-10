@@ -7,7 +7,7 @@ const LeaderboardCard = (props) => {
         <Col xs="auto">
           <img
             src={props.data.image}
-            style={{ width: 60, borderRadius: "50%" }}
+            style={{ width: 60, height: 60, borderRadius: "50%" }}
           />
         </Col>
         <Col>
