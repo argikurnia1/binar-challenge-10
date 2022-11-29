@@ -1,0 +1,64 @@
+/* body {
+  font-family: 'Open Sans';
+  background-color: #9C835F;
+} */
+
+.textVs {
+  font-size: 100px;
+  color: #BD0000;
+}
+
+.containerHandItems {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 300;
+}
+
+.cardHand {
+  border-radius: 25px;
+  height: 150px;
+  width: 150px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.cardHand:hover {
+  background-color: #C4C4C4;
+}
+
+
+.cardReset {
+  border-radius: 25px;
+  height: 90px;
+  width: 90px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardReset:hover {
+  background-color: #C4C4C4;
+}
+
+.imgReset {
+  width: 70px;
+  height: auto;
+}
+
+.imgHand {
+  width: 100px;
+  height: auto;
+}
+
+.cardResult {
+  transform: rotate(-25deg);
+  border-radius: 15px;
+  background: #4C9654;
+  color: white;
+  height: 100px;
+  width: 200px;
+  align-items: center;
+  justify-content: center;
+
+}

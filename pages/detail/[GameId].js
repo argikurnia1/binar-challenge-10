@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Container } from "react-bootstrap";
 import GameDetailHeader from "../../components/GameDetail/GameDetailHeader";
 import GameDetailLB from "../../components/GameDetail/GameDetailLB";
-import Navbar from "../../components/layout/Nav/Navbar";
+import Navbar from "../../components/Layout/Nav/Navbar";
 
 const GameDetail = () =>{
     const router = useRouter()
