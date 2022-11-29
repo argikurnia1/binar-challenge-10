@@ -104,8 +104,8 @@
 }
 
 .logo {
-  height: 1em;
-  margin-left: 0.5rem;
+  height: 2rem;
+  width: 171px;
 }
 
 @media (max-width: 600px) {
@@ -123,7 +123,7 @@
   .code {
     background: #111;
   }
-  .logo img {
+  Image .logo {
     filter: invert(1);
   }
 }
