@@ -13,6 +13,7 @@ import logo from '../../public/assets/echamp.png';
 
 
 import style from '../Login/Login.module.css'
+import Image from "next/image";
 
 class Login extends Component {
   state = {
@@ -56,7 +57,7 @@ class Login extends Component {
               </Col>
               <Col md={6} className={style.rowRight}>
                 <div>
-                  <img src={logo} className={style.logoImage} />
+                  <Image src={logo} className={style.logoImage} />
                 </div>
                 <div className={style.formLogin}>
                   <Form>
