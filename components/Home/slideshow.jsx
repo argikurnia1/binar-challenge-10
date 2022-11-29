@@ -7,6 +7,7 @@ import {
   Col,
   Button,
 } from "react-bootstrap";
+import Image from "next/image";
 
 import btnSlide from "../../public/assets/scroll_down.svg";
 import styleSlideShow from "./slideshow.module.css";
@@ -23,14 +24,14 @@ const Slideshow = (props) => {
           index === 0 ? (
             <span
               data-target="#carouselExampleIndicators"
-              className="dot active"
+              className={`${styleSlideShow.dot} active`}
               data-slide-to={index}
               key={request.id}
             ></span>
           ) : (
             <span
               data-target="#carouselExampleIndicators"
-              className="dot"
+              className={styleSlideShow.dot}
               data-slide-to={index}
               key={request.id}
             ></span>
@@ -64,7 +65,12 @@ const Slideshow = (props) => {
         role="button"
         data-slide="prev"
       >
-        <img src={btnSlide} style={{ transform: "rotate(90deg)" }} />
+        <Image
+          width={23}
+          height={12}
+          src={btnSlide}
+          style={{ transform: "rotate(90deg)" }}
+        />
       </a>
       <a
         className={styleSlideShow.carouselControlNext}
@@ -72,7 +78,13 @@ const Slideshow = (props) => {
         role="button"
         data-slide="next"
       >
-        <img src={btnSlide} alt="" style={{ transform: "rotate(-90deg)" }} />
+        <Image
+          width={23}
+          height={12}
+          src={btnSlide}
+          alt=""
+          style={{ transform: "rotate(-90deg)" }}
+        />{" "}
       </a>
     </div>
   );
