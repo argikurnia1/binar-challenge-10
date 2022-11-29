@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux"
-// import style from './button.module.css'
+
 
 const LoadingButton = ({title, onClick}) => {
   const loadingData = useSelector((state) => {
