@@ -11,6 +11,7 @@ import logo from "../../public/assets/echamp-white.png";
 import Navbar from "../../components/Layout/Nav/Navbar"
 import Footer from "../../components/Layout/Footer/Footer";
 import { registerUser } from "../../actions/fb_database";
+import Image from "next/image";
 
 class Register extends Component {
   state = {
@@ -59,7 +60,7 @@ class Register extends Component {
           <div className={style.register}>
             <div style={{ backgroundColor: "#B02C25" }}>
               <a className={style.imgA}>
-                <img src={logo} className={style.imgLogo} />
+                <Image src={logo} className={style.imgLogo} />
               </a>
             </div>
             <div style={{ backgroundColor: "#FFFFFF" }}>
