@@ -170,6 +170,7 @@ const EditProfileBox = () => {
                       placeholder="Enter Email"
                       onChange={InputEvent}
                       name="email"
+                      disabled
                     />
                   </InputGroup>
                 </div>
@@ -208,6 +209,7 @@ const EditProfileBox = () => {
                   <LoadingButton
                     onClick={() => handleUpdate()}
                     title="UPDATE"
+                    variant="success"
                   />
                 </div>
               </Col>

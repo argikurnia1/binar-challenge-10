@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { authFirebase } from "../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-
+import { useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Col from 'react-bootstrap/Col';
@@ -11,9 +11,10 @@ import Form from 'react-bootstrap/Form';
 
 import logo from '../../public/assets/echamp.png';
 
-
 import style from '../Login/Login.module.css'
 import Image from "next/image";
+import LoadingButton from "../Layout/Button/LoadingButton";
+import { loadingAction } from "../../redux/reducers/loadingReducer"
 
 class Login extends Component {
   state = {
@@ -35,7 +36,6 @@ class Login extends Component {
         alert(errorMessage)
       });
   }
-
   handleOnChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
@@ -76,9 +76,11 @@ class Login extends Component {
                         onChange={this.handleOnChange} />
                     </Form.Group>
                     <div className="d-grid gap-2 pb-3">
-                      <Button variant="primary" onClick={this.handleLogin}>
-                        LOGIN
-                      </Button>
+                      <LoadingButton
+                      onClick={this.handleLogin}
+                      title="LOGIN"
+                      variant="primary"
+                      />
                     </div>
                   </Form>
                 </div>

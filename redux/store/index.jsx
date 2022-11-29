@@ -5,7 +5,7 @@ import { createWrapper } from "next-redux-wrapper";
 
 const allReducers = combineReducers({
   userLoginReducer: userLoginSlice.reducer,
-  loadingReducer: loadingSlice.reducer,
+  loadingReducer: loadingSlice.reducer
 });
 
 const myStore = () =>

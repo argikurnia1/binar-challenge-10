@@ -12,6 +12,7 @@ import Navbar from "../../components/Layout/Nav/Navbar"
 import Footer from "../../components/Layout/Footer/Footer";
 import { registerUser } from "../../actions/fb_database";
 import Image from "next/image";
+import LoadingButton from "../../components/Layout/Button/LoadingButton";
 
 class Register extends Component {
   state = {
@@ -99,13 +100,11 @@ class Register extends Component {
                   />
                 </Form.Group>
                 <div className="d-grid gap-2 pb-2">
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    onClick={this.handleRegister}
-                  >
-                    REGISTER
-                  </Button>
+                  <LoadingButton
+                  onClick={this.handleRegister}
+                  title="REGISTER"
+                  variant="primary"
+                  />
                 </div>
               </Form>
             </div>
