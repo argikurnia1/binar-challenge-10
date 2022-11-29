@@ -10,7 +10,7 @@ const ProfileHeader = () => {
   const router = useRouter();
 
   const editHandler = () => {
-    router.push(`/edit_profile/${userLoginData[0]?.data.id_player}`);
+    router.push(`/edit_profile`);
   };
   const socialMediaHandler = () => {
     window.location.href = userLoginData[0]?.data.social_media;
