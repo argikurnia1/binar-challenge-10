@@ -97,27 +97,14 @@ const Dummy = () => {
     }
   ])
   const [random, setRandom] = useState(0)
-  const handleRandom = () =>{
+
+
+  const handleGame= async () =>{
+    dispatch(loadingAction.toggleLoadingStatus())
     let randomize = Math.floor((Math.random() * 12) + 1)
     setRandom(randomize)
-  }
-  const handleGame= async () =>{
-    console.log("nilai rand awal",random)
+    insertGameScore("-NI6wC-QCtYu4TMTzgt0",userLoginData[0]?.id,memeBase[randomize].score)
     dispatch(loadingAction.toggleLoadingStatus())
-    console.log("nilai rand",random)
-    console.log("player id",userLoginData[0]?.id)
-    console.log("score",memeBase[random]?.score)
-    // insertGameScore("-NI6wC-QCtYu4TMTzgt0",userLoginData[0]?.id,memeBase[random].score)
-    dispatch(loadingAction.toggleLoadingStatus())
-  }
-  const handleMulai = () =>{
-    handleRandom()
-    if(random !== 0){
-      handleGame()
-    }
-    else{
-      handleRandom()
-    }
   }
 
   useState(() =>{
@@ -134,15 +121,16 @@ const Dummy = () => {
             </div>
             <Card.Title className="d-flex flex-column text-center">
               <h1>You Are</h1>
-              <img alt="" className="mx-auto"src={memeBase[random? random :0].img} style={{ width: "60%"}}/>
-              <h3>{memeBase[random? random :0].title}</h3>
+              <img alt="" className="mx-auto"src={memeBase[random].img} style={{ width: "60%"}}/>
+              <h3>{memeBase[random].title}</h3>
             </Card.Title>
             <Card.Text>
-              {memeBase[random? random :0].desc}
+              {memeBase[random].desc}
             </Card.Text>
             <LoadingButton
             title="PLAY"
-            onClick={()=>handleMulai()}
+            onClick={()=>handleGame()}
+
             varriant="success"
             />
           </div>
