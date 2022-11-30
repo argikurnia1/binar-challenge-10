@@ -1,10 +1,12 @@
 import { authFirebase } from "../config/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "next/router";
 
 export const checkDataLogin = async (setIsLogin, setDataUser = () => {}) => {
   const uuid = await localStorage.getItem("UID");
   if (uuid == null) {
     setIsLogin(false);
+    window.location.href = "/";
   } else {
     setIsLogin(true);
     onAuthStateChanged(authFirebase, (user) => {
@@ -23,3 +25,12 @@ export const firebaseLogout = async () => {
   signOut(authFirebase);
   console.log("Signed Out");
 };
+
+
+export const Authentication = () => {
+  const resp = localStorage.getItem("UID")
+  if(resp == "null"){
+    console.log(resp)
+    window.location.href = "/";
+  }
+}
