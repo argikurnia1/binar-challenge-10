@@ -1,12 +1,64 @@
+import { async } from "@firebase/util";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { set, ref, onValue, update } from "firebase/database";
-import { database } from "../config/firebase";
+import { authFirebase, database } from "../config/firebase";
 
 const db = database;
 
 //write biodata
+// export const insertUserBiodata = async (id_player, userData) => {
+//   console.log('id', id_player,'ud', userData)
+//   await set(ref(database, `game_user/${id_player}`, userData))
+// }
 
-export const registerUser = (id_player, name, username, email) => {
+// export const registerUser = async (username, password, name, email) => {
+//   try {
+//     const userCredential = await createUserWithEmailAndPassword(authFirebase, email, password)
+//     const user = userCredential.user
+//     console.log('user', user)
+//     localStorage.setItem("jwt-token", user.accessToken)
+//     const data = {
+//       id_player: user.uid,
+//         name: name,
+//         username: username,
+//         email: email,
+//         total_score: 0,
+//         city: "",
+//         social_media: "",
+//         profile_picture:
+//           "https://mir-s3-cdn-cf.behance.net/project_modules/fs/e1fd5442419075.57cc3f77ed8c7.png",
+//         total_game: 0,
+//         player_rank: 0,
+//     }
+//     console.log('data', data)
+//     await insertUserBiodata(user.uid, data)
+//     return {
+//       status: 'SUCCES',
+//       data: {
+//         id_player: user.uid,
+//         name: name,
+//         username: username,
+//         email: email,
+//         total_score: 0,
+//         city: "",
+//         social_media: "",
+//         profile_picture:
+//           "https://mir-s3-cdn-cf.behance.net/project_modules/fs/e1fd5442419075.57cc3f77ed8c7.png",
+//         total_game: 0,
+//         player_rank: 0,
+//       }
+//     }
+//   } catch (err) {
+//     return {
+//       status: 'ERROR',
+//       message: err.message
+//     }
+//   }
+// }
+
+export const registerUser = async (id_player, name, username, email) => {
   const dbRef = ref(db, `game_user/${id_player}`);
+  console.log ('dbRef', dbRef)
   const data = {
     id_player,
     name,
@@ -20,8 +72,10 @@ export const registerUser = (id_player, name, username, email) => {
     total_game: 0,
     player_rank: 0,
   };
-  set(dbRef, data);
+  await set(dbRef, data);
 };
+
+
 // get all user
 export const retrieveAllUser = () => {
   return new Promise((resolve, reject) => {

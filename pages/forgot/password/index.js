@@ -9,8 +9,8 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import Footer from "../../../components/layout/footer/Footer";
-import Navbar from "../../../components/layout/nav/Navbar";
+import Footer from "../../../components/Layout/Footer/Footer";
+import Navbar from "../../../components/Layout/Nav/Navbar";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
