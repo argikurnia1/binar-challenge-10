@@ -151,17 +151,18 @@ const Dummy = () => {
             <Card.Text>
               {memeBase[random].desc}
             </Card.Text>
-            <LoadingButton
-            title="PLAY"
-            onClick={()=>handleGame()}
-            varriant="success"
-            />
-
-            <WYMGameInfo
-            props={gameInfo}
-            />
-
+            <div className="d-flex flex-row">
+              <LoadingButton
+                title="PLAY"
+                onClick={()=>handleGame()}
+                varriant="success"
+                />
+                <WYMGameInfo
+                props={gameInfo}
+                />
+            </div>
           </div>
+          
         </div>
         
       </Container>
