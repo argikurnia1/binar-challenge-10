@@ -30,7 +30,7 @@ const ForgotPassword = () => {
     e.preventDefault();
 
     const config = {
-      url: `${process.env.NEXT_APP_FORGOT_PASSWORD_REDIRECT}${process.env.NEXT_APP_PORT}`,
+      url: `${process.env.NEXT_APP_FORGOT_PASSWORD_REDIRECT}`,
       handleCodeInApp: true,
     };
 
