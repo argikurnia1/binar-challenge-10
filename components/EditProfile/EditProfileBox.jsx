@@ -205,15 +205,15 @@ const EditProfileBox = () => {
                     <Form.Control type="file" onChange={InputFile} />
                   </Form.Group>
                 </div>
-                <div className={styleEditProfileBox.tombolUpdate}>
-                  <LoadingButton
+              </Col>
+            </Row>
+            <div className={`${styleEditProfileBox.tombolUpdate} d-grid gap-2 pb-2`}>
+            <LoadingButton
                     onClick={() => handleUpdate()}
                     title="UPDATE"
                     variant="success"
                   />
-                </div>
-              </Col>
-            </Row>
+            </div>
           </Container>
         </Card.Body>
       </Card>
