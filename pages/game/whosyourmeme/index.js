@@ -138,7 +138,6 @@ const Dummy = () => {
   }
   return (
     <div>
-      
       <Navbar bgColor="#4A4A5C" />
       <Container style={{ color: "coral"}}>
         <div className={style.bodyButton}>
