@@ -1,7 +1,5 @@
 import { async } from "@firebase/util";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { async } from "@firebase/util";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { set, ref, onValue, update } from "firebase/database";
 import { authFirebase, database } from "../config/firebase";
 
