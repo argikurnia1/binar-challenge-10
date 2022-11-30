@@ -11,7 +11,7 @@ import img_hand_gunting from "../../../public/assets/games/rock-paper-scissors/h
 import img_icon_refresh from "../../../public/assets/games/rock-paper-scissors/icon_refresh.png";
 import style from "../../../styles/games/rps.module.css";
 import { insertGameScore } from "../../../actions/games";
-import { checkDataLogin } from "../../../actions/autentication";
+import { Authentication, checkDataLogin } from "../../../actions/autentication";
 import {
   playerRank,
   totalGameByUser,
@@ -141,6 +141,7 @@ const GameRPS = () => {
   }
 
   useEffect(() => {
+    Authentication()
     uuid = localStorage.getItem("UID");
     let hand_com_1 = document.getElementById("hand_com_1");
     let hand_com_2 = document.getElementById("hand_com_2");
