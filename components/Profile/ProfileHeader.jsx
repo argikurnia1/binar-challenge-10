@@ -100,7 +100,7 @@ const ProfileHeader = () => {
                 <Card.Title
                   className={`${stylesProfileHeader.profileHeaderRbTitle}`}
                 >
-                  {userLoginData[0]?.data?.total_score}
+                  {userLoginData[0]?.data?.player_rank}
                 </Card.Title>
                 <Card.Text
                   className={`${stylesProfileHeader.profileHeaderRbText}`}
