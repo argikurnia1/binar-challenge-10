@@ -2,59 +2,10 @@ import { async } from "@firebase/util";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { set, ref, onValue, update } from "firebase/database";
 import { authFirebase, database } from "../config/firebase";
+import { retrieveAllGames } from "./games";
 
 const db = database;
 
-//write biodata
-// export const insertUserBiodata = async (id_player, userData) => {
-//   console.log('id', id_player,'ud', userData)
-//   await set(ref(database, `game_user/${id_player}`, userData))
-// }
-
-// export const registerUser = async (username, password, name, email) => {
-//   try {
-//     const userCredential = await createUserWithEmailAndPassword(authFirebase, email, password)
-//     const user = userCredential.user
-//     console.log('user', user)
-//     localStorage.setItem("jwt-token", user.accessToken)
-//     const data = {
-//       id_player: user.uid,
-//         name: name,
-//         username: username,
-//         email: email,
-//         total_score: 0,
-//         city: "",
-//         social_media: "",
-//         profile_picture:
-//           "https://mir-s3-cdn-cf.behance.net/project_modules/fs/e1fd5442419075.57cc3f77ed8c7.png",
-//         total_game: 0,
-//         player_rank: 0,
-//     }
-//     console.log('data', data)
-//     await insertUserBiodata(user.uid, data)
-//     return {
-//       status: 'SUCCES',
-//       data: {
-//         id_player: user.uid,
-//         name: name,
-//         username: username,
-//         email: email,
-//         total_score: 0,
-//         city: "",
-//         social_media: "",
-//         profile_picture:
-//           "https://mir-s3-cdn-cf.behance.net/project_modules/fs/e1fd5442419075.57cc3f77ed8c7.png",
-//         total_game: 0,
-//         player_rank: 0,
-//       }
-//     }
-//   } catch (err) {
-//     return {
-//       status: 'ERROR',
-//       message: err.message
-//     }
-//   }
-// }
 
 export const registerUser = async (id_player, name, username, email) => {
   const dbRef = ref(db, `game_user/${id_player}`);
@@ -71,6 +22,7 @@ export const registerUser = async (id_player, name, username, email) => {
       "https://mir-s3-cdn-cf.behance.net/project_modules/fs/e1fd5442419075.57cc3f77ed8c7.png",
     total_game: 0,
     player_rank: 0,
+    playedGame:[]
   };
   await set(dbRef, data);
 };
@@ -162,6 +114,15 @@ export const updateTotalGame = (id, total_game) => {
   const dbRef = ref(db, `game_user/${id}`);
   const data = {
     total_game,
+  };
+  update(dbRef, data);
+};
+
+//Update played game
+export const updatePlayedGame = (id, playedGame) => {
+  const dbRef = ref(db, `game_user/${id}`);
+  const data = {
+    playedGame,
   };
   update(dbRef, data);
 };
@@ -306,3 +267,22 @@ export const totalGameByUser = async (id) => {
   updateTotalGame(id, game_list.length);
   return game_list.length;
 };
+
+// played game
+
+export const playedGame = async(id) =>{
+  let game_list = [];
+  let temp = [];
+  const scoreAll = await retrieveAllScore();
+  scoreAll.forEach((e) => {
+    if (e.data.id_player == id) {
+      temp.push(e);
+    }
+  });
+  temp.forEach((e) => {
+    if (game_list.includes(e.data.game_id) === false) {
+      game_list.push(e.data.game_id);
+    }
+  });
+  updatePlayedGame(id, game_list);
+}
