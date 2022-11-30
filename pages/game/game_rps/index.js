@@ -10,6 +10,11 @@ import img_icon_refresh from "../../../public/assets/games/rock-paper-scissors/i
 import style from "../../../styles/games/rps.module.css";
 import { insertGameScore } from "../../../actions/games";
 import { checkDataLogin } from "../../../actions/autentication";
+import {
+  playerRank,
+  totalGameByUser,
+  totalPointByUser,
+} from "../../../actions/fb_database";
 
 const GameRPS = () => {
   const userLoginData = useSelector((state) => {
@@ -55,7 +60,7 @@ const GameRPS = () => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  function press(you_chose) {
+  async function press(you_chose) {
     console.log("Button has been pressed");
     if (have_result) {
       return;
@@ -91,10 +96,19 @@ const GameRPS = () => {
 
     if (who_won === 1) {
       insertGameScore(game_id, uuid, 2);
+      await totalGameByUser(uuid);
+      await totalPointByUser(uuid);
+      await playerRank(uuid);
     } else if (who_won === 2) {
       insertGameScore(game_id, uuid, -1);
+      await totalGameByUser(uuid);
+      await totalPointByUser(uuid);
+      await playerRank(uuid);
     } else {
       insertGameScore(game_id, uuid, 0);
+      await totalGameByUser(uuid);
+      await totalPointByUser(uuid);
+      await playerRank(uuid);
     }
   }
 
