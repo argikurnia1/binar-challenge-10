@@ -13,6 +13,7 @@ import style from "../../../styles/games/rps.module.css";
 import { insertGameScore } from "../../../actions/games";
 import { Authentication, checkDataLogin } from "../../../actions/autentication";
 import {
+  playedGame,
   playerRank,
   totalGameByUser,
   totalPointByUser,
@@ -112,6 +113,7 @@ const GameRPS = () => {
       await totalGameByUser(uuid);
       await totalPointByUser(uuid);
       await playerRank(uuid);
+      await playedGame(uuid);
       setCurrentGameInfo({
         score: 2,
         resultGame: "PLAYER 1 WIN",
@@ -122,6 +124,7 @@ const GameRPS = () => {
       await totalGameByUser(uuid);
       await totalPointByUser(uuid);
       await playerRank(uuid);
+      await playedGame(uuid);
       setCurrentGameInfo({
         score: -1,
         resultGame: "COMP WIN",
@@ -132,6 +135,7 @@ const GameRPS = () => {
       await totalGameByUser(uuid);
       await totalPointByUser(uuid);
       await playerRank(uuid);
+      await playedGame(uuid);
       setCurrentGameInfo({
         score: 0,
         resultGame: "DRAW",
@@ -141,7 +145,7 @@ const GameRPS = () => {
   }
 
   useEffect(() => {
-    Authentication()
+    Authentication();
     uuid = localStorage.getItem("UID");
     let hand_com_1 = document.getElementById("hand_com_1");
     let hand_com_2 = document.getElementById("hand_com_2");
