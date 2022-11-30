@@ -5,7 +5,7 @@ import styleEditProfileBox from "./EditProfileBox.module.css"
 import { useState } from "react";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { updateProfile } from "../../actions/fb_database";
+import { playedGame, updateProfile } from "../../actions/fb_database";
 import { uploadProfileImg } from "../../actions/fb_storage";
 import { retrieveLoginUser } from "../../redux/reducers/loginReducer";
 import LoadingButton from "../Layout/Button/LoadingButton";
