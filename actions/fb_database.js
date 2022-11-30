@@ -72,7 +72,6 @@ export const registerUser = async (id_player, name, username, email) => {
     total_game: 0,
     player_rank: 0,
   };
-  console.log('data', data)
   await set(dbRef, data);
 };
 
