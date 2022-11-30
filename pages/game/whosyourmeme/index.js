@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { loadingAction } from "../../../redux/reducers/loadingReducer";
 import { insertGameScore } from "../../../actions/games"
 import { async } from "@firebase/util"
+import { playerRank, totalGameByUser, totalPointByUser } from "../../../actions/fb_database"
 
 const Dummy = () => {
   const dispatch = useDispatch()
@@ -105,6 +106,9 @@ const Dummy = () => {
     setRandom(randomize)
     insertGameScore("-NI6wC-QCtYu4TMTzgt0",userLoginData[0]?.id,memeBase[randomize].score)
     dispatch(loadingAction.toggleLoadingStatus())
+    playerRank(userLoginData[0]?.id)
+    totalPointByUser(userLoginData[0]?.id)
+    totalGameByUser(userLoginData[0]?.id)
   }
 
   useState(() =>{
@@ -130,7 +134,6 @@ const Dummy = () => {
             <LoadingButton
             title="PLAY"
             onClick={()=>handleGame()}
-
             varriant="success"
             />
           </div>
