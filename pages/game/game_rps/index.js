@@ -1,5 +1,7 @@
 import { Component, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 import Navbar from "../../../components/Layout/Nav/Navbar";
 import Image from "next/image";
@@ -22,6 +24,17 @@ const GameRPS = () => {
   });
   const game_id = "-NG-Fxccy-8f1RZoup6D";
   // const uuid = localStorage.getItem('UID');
+  const [show, setShow] = useState(false);
+  const [currentGameInfo, setCurrentGameInfo] = useState({
+    score: "0",
+    resultGame: "null",
+  });
+
+  console.log(currentGameInfo);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   let uuid = null;
   let color_chose = "#C4C4C4";
   let color_unchose = "#00000000";
@@ -99,16 +112,31 @@ const GameRPS = () => {
       await totalGameByUser(uuid);
       await totalPointByUser(uuid);
       await playerRank(uuid);
+      setCurrentGameInfo({
+        score: 2,
+        resultGame: "PLAYER 1 WIN",
+      });
+      handleShow();
     } else if (who_won === 2) {
       insertGameScore(game_id, uuid, -1);
       await totalGameByUser(uuid);
       await totalPointByUser(uuid);
       await playerRank(uuid);
+      setCurrentGameInfo({
+        score: -1,
+        resultGame: "COMP WIN",
+      });
+      handleShow();
     } else {
       insertGameScore(game_id, uuid, 0);
       await totalGameByUser(uuid);
       await totalPointByUser(uuid);
       await playerRank(uuid);
+      setCurrentGameInfo({
+        score: 0,
+        resultGame: "DRAW",
+      });
+      handleShow();
     }
   }
 
@@ -134,123 +162,147 @@ const GameRPS = () => {
       com: hand_com,
     };
 
-    reset();
-  }, [userLoginData]);
+    if (currentGameInfo.score == 0 || currentGameInfo.resultGame == "") {
+      reset();
+    }
+  }, [userLoginData, show, currentGameInfo]);
 
   return (
-    <div style={{ backgroundColor: "#9C835F" }}>
-      <Navbar bgColor="#4A4A5C" />
+    <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Score And Result Game</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Score: {currentGameInfo.score}</Modal.Body>
+        <Modal.Body>Result: {currentGameInfo.resultGame}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <div style={{ backgroundColor: "#9C835F" }}>
+        <Navbar bgColor="#4A4A5C" />
 
-      <div className="container">
-        <div
-          className="row text-center align-items-center justify-content-center"
-          style={{ height: "100vh" }}
-        >
-          <div className="col-3 ">
-            <div className="row ">
-              <div className="col-12">
-                <h4 className="">
-                  <strong>PLAYER 1</strong>
-                </h4>
-              </div>
-              <div className={`col-12 ${style.containerHandItems}`}>
-                <a
-                  href="#"
-                  onClick={() => {
-                    press(1);
-                  }}
-                >
-                  <div className={`d-flex ${style.cardHand}`}>
-                    <div id="hand_p_1" className={style.cardHand}>
-                      <Image src={img_hand_batu} className={style.imgHand} />
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div className={`col-12 ${style.containerHandItems}`}>
-                <a
-                  href="#"
-                  onClick={() => {
-                    press(2);
-                  }}
-                >
-                  <div className={`d-flex ${style.cardHand}`}>
-                    <div id="hand_p_2" className={style.cardHand}>
-                      <Image src={img_hand_kertas} className={style.imgHand} />
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div className={`col-12 ${style.containerHandItems}`}>
-                <a
-                  href="#"
-                  onClick={() => {
-                    press(3);
-                  }}
-                >
-                  <div className={`d-flex ${style.cardHand}`}>
-                    <div id="hand_p_3" className={`d-flex ${style.cardHand}`}>
-                      <Image src={img_hand_gunting} className={style.imgHand} />
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className={`col-3 justify-content ${style.containerHandItems}`}>
-            <h1 id="text_vs" className={style.textVs}>
-              <strong>VS</strong>
-            </h1>
-            <div id="winner">
-              <div className={`d-flex ${style.cardResult}`}>
-                <div className="d-flex justify-content-center">
-                  <h4 id="winner_text" className="align-middle ">
-                    WHO WIN?
+        <div className="container">
+          <div
+            className="row text-center align-items-center justify-content-center"
+            style={{ height: "100vh" }}
+          >
+            <div className="col-3 ">
+              <div className="row ">
+                <div className="col-12">
+                  <h4 className="">
+                    <strong>PLAYER 1</strong>
                   </h4>
                 </div>
+                <div className={`col-12 ${style.containerHandItems}`}>
+                  <a
+                    href="#"
+                    onClick={() => {
+                      press(1);
+                    }}
+                  >
+                    <div className={`d-flex ${style.cardHand}`}>
+                      <div id="hand_p_1" className={style.cardHand}>
+                        <Image src={img_hand_batu} className={style.imgHand} />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div className={`col-12 ${style.containerHandItems}`}>
+                  <a
+                    href="#"
+                    onClick={() => {
+                      press(2);
+                    }}
+                  >
+                    <div className={`d-flex ${style.cardHand}`}>
+                      <div id="hand_p_2" className={style.cardHand}>
+                        <Image
+                          src={img_hand_kertas}
+                          className={style.imgHand}
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div className={`col-12 ${style.containerHandItems}`}>
+                  <a
+                    href="#"
+                    onClick={() => {
+                      press(3);
+                    }}
+                  >
+                    <div className={`d-flex ${style.cardHand}`}>
+                      <div id="hand_p_3" className={`d-flex ${style.cardHand}`}>
+                        <Image
+                          src={img_hand_gunting}
+                          className={style.imgHand}
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
+            <div
+              className={`col-3 justify-content ${style.containerHandItems}`}
+            >
+              <h1 id="text_vs" className={style.textVs}>
+                <strong>VS</strong>
+              </h1>
+              <div id="winner">
+                <div className={`d-flex ${style.cardResult}`}>
+                  <div className="d-flex justify-content-center">
+                    <h4 id="winner_text" className="align-middle ">
+                      WHO WIN?
+                    </h4>
+                  </div>
+                </div>
+              </div>
 
-            <div className="position-absolute bottom-0 start-5 translate-middle-y">
-              <a
-                href="#"
-                onClick={() => {
-                  reset();
-                }}
-              >
-                <div className={`d-flex ${style.cardReset}`}>
-                  <Image src={img_icon_refresh} className={style.imgReset} />
-                </div>
-              </a>
+              <div className="position-absolute bottom-0 start-5 translate-middle-y">
+                <a
+                  href="#"
+                  onClick={() => {
+                    reset();
+                  }}
+                >
+                  <div className={`d-flex ${style.cardReset}`}>
+                    <Image src={img_icon_refresh} className={style.imgReset} />
+                  </div>
+                </a>
+              </div>
             </div>
-          </div>
-          <div className="col-3">
-            <div className="row">
-              <div className="col-12">
-                <h4>
-                  <strong>COM</strong>
-                </h4>
-              </div>
-              <div className={`col-12 ${style.containerHandItems}`}>
-                <div id="hand_com_1" className={style.cardHand}>
-                  <Image src={img_hand_batu} className={style.imgHand} />
+            <div className="col-3">
+              <div className="row">
+                <div className="col-12">
+                  <h4>
+                    <strong>COM</strong>
+                  </h4>
                 </div>
-              </div>
-              <div className={`col-12 ${style.containerHandItems}`}>
-                <div id="hand_com_2" className={style.cardHand}>
-                  <Image src={img_hand_kertas} className={style.imgHand} />
+                <div className={`col-12 ${style.containerHandItems}`}>
+                  <div id="hand_com_1" className={style.cardHand}>
+                    <Image src={img_hand_batu} className={style.imgHand} />
+                  </div>
                 </div>
-              </div>
-              <div className={`col-12 ${style.containerHandItems}`}>
-                <div id="hand_com_3" className={style.cardHand}>
-                  <Image src={img_hand_gunting} className={style.imgHand} />
+                <div className={`col-12 ${style.containerHandItems}`}>
+                  <div id="hand_com_2" className={style.cardHand}>
+                    <Image src={img_hand_kertas} className={style.imgHand} />
+                  </div>
+                </div>
+                <div className={`col-12 ${style.containerHandItems}`}>
+                  <div id="hand_com_3" className={style.cardHand}>
+                    <Image src={img_hand_gunting} className={style.imgHand} />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
