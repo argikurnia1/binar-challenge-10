@@ -5,7 +5,8 @@ import { Container } from "react-bootstrap";
 import GameDetailHeader from "../../components/GameDetail/GameDetailHeader";
 import GameDetailLB from "../../components/GameDetail/GameDetailLB";
 import Navbar from "../../components/Layout/Nav/Navbar";
-import Footer from "../../components/layout/Footer/Footer";
+import Footer from "../../components/Layout/Footer/Footer";
+
 
 const GameDetail = () =>{
     const router = useRouter()
