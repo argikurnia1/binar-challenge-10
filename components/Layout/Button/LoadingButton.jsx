@@ -9,11 +9,11 @@ const LoadingButton = ({title, onClick, variant}) => {
 
   if(loadingData.loadingStatus){
     return(
-        <Button variant={variant} disabled >Loading</Button>
+        <Button variant={variant} disabled className="mx-3">Loading</Button>
     )
   }else{
     return(
-        <Button variant={variant} onClick={onClick}>{title}</Button>
+        <Button variant={variant} onClick={onClick} className="mx-3">{title}</Button>
       )
     }
   }

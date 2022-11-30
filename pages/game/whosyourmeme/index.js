@@ -12,7 +12,9 @@ import { loadingAction } from "../../../redux/reducers/loadingReducer";
 import { insertGameScore } from "../../../actions/games"
 import { async } from "@firebase/util"
 import { playerRank, totalGameByUser, totalPointByUser } from "../../../actions/fb_database"
+
 import WYMGameInfo from "../../../components/Games/whosyourmeme/WYMGameInfo"
+
 
 const Dummy = () => {
   const dispatch = useDispatch()
@@ -99,17 +101,20 @@ const Dummy = () => {
     }
   ])
   const [random, setRandom] = useState(0)
+
   const [gameInfo, setGameInfo] = useState({
     ronde: 0,
     status: "let the game decide",
     score: 0
   })
 
+
   const handleGame= async () =>{
     dispatch(loadingAction.toggleLoadingStatus())
     let randomize = Math.floor((Math.random() * 12) + 1)
     setRandom(randomize)
     insertGameScore("-NI6wC-QCtYu4TMTzgt0",userLoginData[0]?.id,memeBase[randomize].score)
+
     playerRank(userLoginData[0]?.id)
     totalPointByUser(userLoginData[0]?.id)
     totalGameByUser(userLoginData[0]?.id)
@@ -138,26 +143,27 @@ const Dummy = () => {
       <Container style={{ color: "coral"}}>
         <div className={style.bodyButton}>
           <div className={style.Button}>
-            <div>
-              <Image src={logo} className={style.logoImage} />
-            </div>
+
             <Card.Title className="d-flex flex-column text-center">
               <h1>You Are</h1>
-              <img alt="" className="mx-auto"src={memeBase[random].img} style={{ width: "60%"}}/>
+              <img alt="" className="mx-auto"src={memeBase[random].img} style={{ height: "40vh"}}/>
               <h3>{memeBase[random].title}</h3>
             </Card.Title>
             <Card.Text>
               {memeBase[random].desc}
             </Card.Text>
-            <LoadingButton
-            title="PLAY"
-            onClick={()=>handleGame()}
-            varriant="success"
-            />
-            <WYMGameInfo
-            props={gameInfo}
-            />
+            <div className="d-flex flex-row">
+              <LoadingButton
+                title="PLAY"
+                onClick={()=>handleGame()}
+                varriant="success"
+                />
+                <WYMGameInfo
+                props={gameInfo}
+                />
+            </div>
           </div>
+          
         </div>
         
       </Container>
