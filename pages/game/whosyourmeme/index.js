@@ -14,6 +14,7 @@ import { async } from "@firebase/util"
 import { playerRank, totalGameByUser, totalPointByUser } from "../../../actions/fb_database"
 
 import WYMGameInfo from "../../../components/Games/whosyourmeme/WYMGameInfo"
+import { Authentication } from "../../../actions/autentication"
 
 
 const Dummy = () => {
@@ -136,6 +137,11 @@ const Dummy = () => {
       score : tempScore
     })
   }
+
+  useEffect(() => {
+    Authentication()
+  },[])
+
   return (
     <div>
       <Navbar bgColor="#4A4A5C" />
