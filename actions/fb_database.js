@@ -56,8 +56,9 @@ const db = database;
 //   }
 // }
 
-export const registerUser = (id_player, name, username, email) => {
+export const registerUser = async (id_player, name, username, email) => {
   const dbRef = ref(db, `game_user/${id_player}`);
+  console.log ('dbRef', dbRef)
   const data = {
     id_player,
     name,
@@ -71,7 +72,8 @@ export const registerUser = (id_player, name, username, email) => {
     total_game: 0,
     player_rank: 0,
   };
-  set(dbRef, data);
+  console.log('data', data)
+  await set(dbRef, data);
 };
 
 
