@@ -120,12 +120,9 @@ const Dummy = () => {
       <Container style={{ color: "coral"}}>
         <div className={style.bodyButton}>
           <div className={style.Button}>
-            <div>
-              <Image src={logo} className={style.logoImage} />
-            </div>
             <Card.Title className="d-flex flex-column text-center">
               <h1>You Are</h1>
-              <img alt="" className="mx-auto"src={memeBase[random].img} style={{ width: "60%"}}/>
+              <img alt="" className="mx-auto"src={memeBase[random].img} style={{ height: "40vh"}}/>
               <h3>{memeBase[random].title}</h3>
             </Card.Title>
             <Card.Text>
