@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { loadingAction } from "../../../redux/reducers/loadingReducer";
 import { insertGameScore } from "../../../actions/games"
 import { async } from "@firebase/util"
-import { playerRank, totalGameByUser, totalPointByUser } from "../../../actions/fb_database"
+import { playedGame, playerRank, totalGameByUser, totalPointByUser } from "../../../actions/fb_database"
 
 import WYMGameInfo from "../../../components/Games/whosyourmeme/WYMGameInfo"
 
@@ -118,6 +118,7 @@ const Dummy = () => {
     playerRank(userLoginData[0]?.id)
     totalPointByUser(userLoginData[0]?.id)
     totalGameByUser(userLoginData[0]?.id)
+    playedGame(userLoginData[0]?.id)
     handleInfo(randomize)
     dispatch(loadingAction.toggleLoadingStatus())
   }
