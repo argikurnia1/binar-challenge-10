@@ -98,6 +98,7 @@ const Dummy = () => {
   ])
   const [random, setRandom] = useState(0)
 
+
   const handleGame= async () =>{
     dispatch(loadingAction.toggleLoadingStatus())
     let randomize = Math.floor((Math.random() * 12) + 1)
@@ -106,6 +107,9 @@ const Dummy = () => {
     dispatch(loadingAction.toggleLoadingStatus())
   }
 
+  useState(() =>{
+    
+  },[])
   return (
     <div>
       <Navbar bgColor="#4A4A5C" />
@@ -126,6 +130,7 @@ const Dummy = () => {
             <LoadingButton
             title="PLAY"
             onClick={()=>handleGame()}
+
             varriant="success"
             />
           </div>
