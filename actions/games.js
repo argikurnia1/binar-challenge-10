@@ -22,7 +22,7 @@ export const seederGame = () => {
     "https://awsimages.detik.net.id/community/media/visual/2021/04/30/disaster-girl_43.png?w=700&q=90",
     "/game/dummygame"
   );
-  
+
   insertSlideshow(
     "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg?t=1656615305",
     "Red dead Redemption II"
