@@ -161,10 +161,6 @@ const GameRPS = () => {
       player: hand_p,
       com: hand_com,
     };
-
-    if (currentGameInfo.score == 0 || currentGameInfo.resultGame == "") {
-      reset();
-    }
   }, [userLoginData, show, currentGameInfo]);
 
   return (
@@ -252,7 +248,7 @@ const GameRPS = () => {
               <h1 id="text_vs" className={style.textVs}>
                 <strong>VS</strong>
               </h1>
-              <div id="winner">
+              <div id="winner" style={{ display: "none" }}>
                 <div className={`d-flex ${style.cardResult}`}>
                   <div className="d-flex justify-content-center">
                     <h4 id="winner_text" className="align-middle ">
